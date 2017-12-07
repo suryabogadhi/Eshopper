@@ -20,8 +20,14 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 const myrouteurls : Routes = [
-  {path:'',component:BodyComponent},
- 
+  {path:'',component:BodyComponent,pathMatch:'full'},
+  {path:'account',component:AccountComponent},
+  {path:'wishlist',component:WishlistComponent},
+  {path:'checkout',component:CheckoutComponent},
+  {path:'cart',component:CartComponent},
+  {path:'login',component:LoginComponent},
+  {path:'products',component:ProductsComponent},
+  {path:'contact',component:ContactComponent}
 ];
 
 @NgModule({

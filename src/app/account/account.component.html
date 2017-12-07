@@ -1,3 +1,175 @@
-<p>
-  account works!
-</p>
+<section id="form"><!--form-->
+  <div class="container login-form">
+      <form (ngSubmit)="submitForm(myform.value)" #myform="ngForm">
+    <div class="row">
+        <h2 class="formheading">Personal Information</h2>
+
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let final of finallist; let i = index">
+                <td>{{final.firstname}}</td>
+                <td>{{final.lastname}}</td>
+                <td>{{final.email}}</td>
+                <td><button type="button" class="btn btn-default res" (click)="editmyform(i)">Reset</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+      <div class="col-sm-4">
+        <div class="login-form"><!--login form-->
+          
+            <input type="text" placeholder="First name" name="fname" ngModel #reffname="ngModel" required/>
+            <p class="fname_error">Enter First name</p>
+
+            <input type="text" placeholder="Last name" name="lname" ngModel ngModel #reflname="ngModel" required/>
+            <p class="fname_error">Enter Last name</p>
+
+            <span class="forradios">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="Male" ngModel #refgender="ngModel">Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="gender" value="Female" ngModel #refgender="ngModel">Fe male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="gender" value="Others" ngModel #refgender="ngModel">Others
+                  </label>
+            </span>
+            <p class="fname_error">Select Gender</p>
+
+            <input type="text" placeholder="Adress line1" name="addres1" ngModel #refaddr1="ngModel"/>
+            <p class="fname_error">Enter adress line1</p>
+
+            <input type="text" placeholder="Adress line2"  name="addres2" ngModel #refaddr2="ngModel"/>
+            <p class="fname_error">Enter adress line2</p>
+
+            <input type="text" placeholder="Land Mark"  name="landmark" ngModel #reflandmark="ngModel"/>
+            <p class="fname_error">Enter landmark</p>
+            
+        
+        </div><!--/login form-->
+      </div>
+     
+      <div class="col-sm-4">
+        <div class="signup-form"><!--sign up form-->
+          
+              <select class="selectbox"  name="country" ngModel #refcountry="ngModel">
+                  <option>-- Country --</option>
+                  <option>United States</option>
+                  <option>Bangladesh</option>
+                  <option>UK</option>
+                  <option>India</option>
+                  <option>Pakistan</option>
+                  <option>Ucrane</option>
+                  <option>Canada</option>
+                  <option>Dubai</option>
+              </select>
+              <p class="fname_error">Select Country</p>
+
+              <select class="selectbox"  name="state" ngModel #refstate="ngModel">
+                  <option>-- State --</option>
+                  <option>United States</option>
+                  <option>Bangladesh</option>
+                  <option>UK</option>
+                  <option>India</option>
+                  <option>Pakistan</option>
+                  <option>Ucrane</option>
+                  <option>Canada</option>
+                  <option>Dubai</option>
+              </select>
+              <p class="fname_error">Select State</p>
+
+              <select class="selectbox"  name="city" ngModel #refcity="ngModel">
+                  <option>-- City --</option>
+                  <option>United States</option>
+                  <option>Bangladesh</option>
+                  <option>UK</option>
+                  <option>India</option>
+                  <option>Pakistan</option>
+                  <option>Ucrane</option>
+                  <option>Canada</option>
+                  <option>Dubai</option>
+              </select>
+              <p class="fname_error">Select city</p>
+          
+            <input type="text" placeholder="Phone" name="phone" ngModel #refphone="ngModel"/>
+            <p class="fname_error">Enter Phone number</p>
+
+            <input type="text" placeholder="Fax" name="fax" ngModel #reffax="ngModel"/>
+            <p class="fname_error">Enter Fax number</p>
+
+            <input type="text" placeholder="Website" name="website" ngModel #refwebsite="ngModel"/>
+            <p class="fname_error">Enter Website name</p>
+         
+        </div><!--/sign up form-->
+      </div>
+
+      <div class="col-sm-4">
+          <div class="login-form"><!--sign up form-->
+           
+             <p class="selectinfo">Select your intrests</p>
+                <span class="forradios">
+                                
+
+                  <label class="checkbox-inline"  *ngFor = "let data of list; let i = index">
+                     <input type="checkbox" name="{{data.name}}" [ngModel]="data.status" #refintrsts="ngModel" value="{{data.name}}"
+                      (change)="mydata(data.name,$event.target.checked)">{{data.name}}
+                  </label>
+                </span>
+                <p class="fname_error">Please check atlest one intrests</p>
+
+                <select class="selectbox" multiple name="special" ngModel #refspecial="ngModel">
+                    <option>-- Special intrests --</option>
+                    <option *ngFor = "let data of speciallist; let i = index" value="{{data.name}}">
+                        {{data.name}}</option>
+                </select>
+                <p class="fname_error">Select special intrests</p>
+
+              <textarea cols="30" rows="3" placeholder="Describe yourself"   name="description" ngModel #refdescription="ngModel"></textarea>
+              <p class="fname_error">Enter description</p>
+              
+          </div><!--/sign up form-->
+        </div>
+
+        <div class="clearfix"></div>
+
+          <div class="col-sm-4">
+            <div class="signup-form">
+              <h2>User Signup Details</h2>
+             
+                <input type="text" placeholder="User name" name="username" #refusername="ngModel" ngModel/>
+                <p class="fname_error">Enter username</p>
+
+                <input type="email" placeholder="Email Address" name="email" #refemail="ngModel" ngModel/>
+                <p class="fname_error">Enter Email</p>
+
+                <input type="password" placeholder="Password" name="password" #refpassword="ngModel" ngModel/>
+                <p class="fname_error">Enter Password</p>
+
+                <input type="password" placeholder="Confirm Password" name="confirmpassword" #refconpassword="ngModel" ngModel/>
+                <p class="fname_error">Enter Correct password</p>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-default sign">Signup</button>
+                    <button type="button" class="btn btn-default res" (click)="resetmyfrom()">Reset</button>
+                    <button type="button" class="btn btn-default auto" (click)="autofill()">Autofill</button>
+                </div>
+                
+             
+            </div>
+          </div> 
+         
+
+        
+    </div>
+  </form>
+  </div>
+</section><!--/form-->
