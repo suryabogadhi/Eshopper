@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes} from "@angular/router";
 
 import { AppComponent } from './app.component';
@@ -17,11 +17,14 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ContactComponent } from './contact/contact.component';
 import { AccountComponent } from './account/account.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ReactformsComponent } from './reactforms/reactforms.component';
+import { RoutesComponent } from './routes/routes.component';
 
 
 const myrouteurls : Routes = [
   {path:'',component:BodyComponent,pathMatch:'full'},
   {path:'account',component:AccountComponent},
+  {path:'Reactforms',component:ReactformsComponent},
   {path:'wishlist',component:WishlistComponent},
   {path:'checkout',component:CheckoutComponent},
   {path:'cart',component:CartComponent},
@@ -45,12 +48,15 @@ const myrouteurls : Routes = [
     WishlistComponent,
     ContactComponent,
     AccountComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ReactformsComponent,
+    RoutesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(myrouteurls)
+    RouterModule.forRoot(myrouteurls),
+    ReactiveFormsModule
     
   ],
   providers: [],

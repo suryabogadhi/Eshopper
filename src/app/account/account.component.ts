@@ -23,15 +23,20 @@ export class AccountComponent implements OnInit {
     { name:'Sports',status:false  },
     { name:'Music' ,status:false }
   ];
+
+
   speciallist = [
-    { name:'Reading',status:false }, 
-    { name:'Traveling',status:false }, 
-    { name:'Blogging' ,status:false }, 
-    { name:'Collecting',status:false  }, 
-    { name:'Cooking' ,status:false },
-    { name:'Sports',status:false  },
-    { name:'Music' ,status:false }
+    { name:'Reading'}, 
+    { name:'Traveling'}, 
+    { name:'Blogging'}, 
+    { name:'Collecting'}, 
+    { name:'Cooking'},
+    { name:'Sports'},
+    { name:'Music'}
   ];
+
+  somespeciallist:Array<any>;
+
 
   patchList = ['Traveling','Blogging','Collecting'];
 
@@ -71,6 +76,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     //console.log(this.mynewform);
     //console.log(this.list);
+
   }
 
 
@@ -142,7 +148,28 @@ export class AccountComponent implements OnInit {
       password:"surya",
       confirmpassword:"surya",
     });
+
+
+  this.somespeciallist = [
+    { name:'Reading'}, 
+    { name:'Traveling'}, 
+  ];
+
+    
+
   }
+
+  comparespecial(t1, t2){
+    console.log(t1);
+   // console.log(t1 +'-' + t2);
+    return t1 && t2 ? t1.name === t2.name : t1 === t2;
+    //return t1.name===t2.name;
+  }
+  
+
+
+  
+
 
   resetmyfrom(){
     this.mynewform.reset();

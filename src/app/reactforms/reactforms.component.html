@@ -1,0 +1,157 @@
+<section id="form"><!--form-->
+  <div class="container login-form">
+      <form (ngSubmit)="submitForm()" [formGroup]="personaldata">
+    <div class="row">
+        <h2 class="formheading">Personal Information</h2>
+      <p class="first_error" *ngIf= "!personaldata.get('logindata').valid">Enter First name</p>
+        
+      <div class="col-sm-4">
+        <div class="login-form" formGroupName="logindata">
+          
+            <input type="text" placeholder="First name" formControlName = "firstname"/>
+            <p class="first_error" *ngIf= "!personaldata.get('logindata.firstname').valid&&personaldata.get('logindata.firstname').touched">Enter First name</p>
+
+
+            <input type="text" placeholder="Last name" formControlName = "lastname"/>
+            <p class="fname_error">Enter Last name</p>
+
+
+            <span class="forradios">
+                <label class="radio-inline">
+                    <input type="radio" value="Male" formControlName = "Gender">Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" value="Female" formControlName = "Gender">Fe male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" value="Others" formControlName = "Gender">Others
+                  </label>
+            </span>
+            <p class="fname_error">Select Gender</p>
+
+
+            <input type="text" placeholder="Adress line1" formControlName = "address1"/>
+            <p class="fname_error">Enter adress line1</p>
+
+
+            <input type="text" placeholder="Adress line2"  formControlName = "address2"/>
+            <p class="fname_error">Enter adress line2</p>
+
+
+            <input type="text" placeholder="Email" formControlName = "email"/>
+            <p class="fname_error">Enter Email</p>
+            
+        
+        </div><!--/login form-->
+      </div>
+     
+      <div class="col-sm-4">
+        <div class="signup-form"><!--sign up form-->
+          
+              <select class="selectbox" formControlName = "country">
+                  <option>-- Country --</option>
+                  <option>United States</option>
+                  <option>Bangladesh</option>
+                  <option>UK</option>
+                  <option>India</option>
+                  <option>Pakistan</option>
+                  <option>Ucrane</option>
+                  <option>Canada</option>
+                  <option>Dubai</option>
+              </select>
+              <p class="fname_error">Select Country</p>
+
+
+              <select class="selectbox" formControlName = "state">
+                  <option>-- State --</option>
+                  <option>United States</option>
+                  <option>Bangladesh</option>
+                  <option>UK</option>
+                  <option>India</option>
+                  <option>Pakistan</option>
+                  <option>Ucrane</option>
+                  <option>Canada</option>
+                  <option>Dubai</option>
+              </select>
+              <p class="fname_error">Select State</p>
+
+
+              <select class="selectbox" formControlName = "city">
+                  <option>-- City --</option>
+                  <option>United States</option>
+                  <option>Bangladesh</option>
+                  <option>UK</option>
+                  <option>India</option>
+                  <option>Pakistan</option>
+                  <option>Ucrane</option>
+                  <option>Canada</option>
+                  <option>Dubai</option>
+              </select>
+              <p class="fname_error">Select city</p>
+
+          
+            <input type="text" placeholder="Phone" formControlName = "phone"/>
+            <p class="first_error" *ngIf= "phonestatus">Enter Phone number</p>
+            
+
+            <input type="text" placeholder="Fax" name="fax" formControlName = "fax"/>
+            <p class="fname_error">Enter Fax number</p>
+
+
+            <input type="text" placeholder="Website" name="website" formControlName = "website"/>
+            <p class="fname_error">Enter Website name</p>
+         
+        </div><!--/sign up form-->
+      </div>
+
+      <div class="col-sm-4">
+          <div class="login-form"><!--sign up form-->
+           
+                <p class="selectinfo">Select your intrests</p>
+                <span class="forradios" formArrayName = "intrests">
+                  <label class="checkbox-inline"  *ngFor = "let mylist of list; let i = index">
+                     <input type="checkbox" value="{{mylist}}" formControlName = "{{i}}">{{mylist}}
+                  </label>
+                </span>
+                <p class="fname_error">Please check atlest one intrests</p>
+
+
+                <select class="selectbox" multiple formControlName = "specialintrests">
+                    <option>-- Special intrests --</option>
+                    <option *ngFor = "let multilist of multiselect; let i = index">
+                        {{multilist}}</option>
+                </select>
+                <p class="fname_error">Select special intrests</p>
+             
+                <p class="selectinfo">Add Your Skills</p>
+                <div *ngFor="let input of inputs; let i = index" formArrayName = "skills" >
+                <input type="text" placeholder="Enter Skills"  formControlName = "{{i}}" value="{{input}}"/>
+                </div>
+                <button value="Add" name="addskils"  (click)="addInput()">Add More Skills</button>
+                <p class="first_error" *ngIf= "phonestatus">Enter Atlest Three skils</p>
+
+
+              
+              
+          </div><!--/sign up form-->
+        </div>
+
+        <div class="clearfix"></div>
+
+          <div class="col-sm-4">
+            <div class="signup-form">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-default sign">Signup</button>
+                    <button type="button" class="btn btn-default res" (click)="resetmyfrom()">Reset</button>
+                    <button type="button" class="btn btn-default auto" (click)="autofill()">Autofill</button>
+                </div>
+            </div>
+          </div> 
+
+         <!-- {{personaldata}} -->
+
+        
+    </div>
+  </form>
+  </div>
+</section><!--/form-->
